@@ -63,6 +63,28 @@ html(lang='en')
                 height: 80px;
             }
 
+            #header > #business {
+                float: left;
+                text-align: left;
+                padding-left: 10px;
+            }
+
+            #header > #business h3 {
+                margin: 0;
+            }
+
+            #header > #business h4 {
+                margin: 0;
+                font-size: 85%;
+                font-weight: 600
+            }
+
+            #header > #business p {
+                margin: 0;
+                margin-top: 2%;
+                font-size: 85%;
+            }
+            
             #header > #reference {
                 float: right;
                 text-align: right;
@@ -85,7 +107,7 @@ html(lang='en')
             }
 
             #header > #logo {
-                width: 50%;
+                width: 40%;
                 float: left;
             }
 
@@ -102,8 +124,8 @@ html(lang='en')
                 line-height: 120%;
             }
 
-            #fromto > #from {
-                float: left;
+            #fromto > #inv {
+                float: right;
                 width: 45%;
                 background: #efefef;
                 margin-top: 30px;
@@ -112,8 +134,12 @@ html(lang='en')
             }
 
             #fromto > #to {
-                float: right;
+                float: left;
                 border: solid grey 1px;
+                width: 45%;
+                margin-top: 30px;
+                font-size: 85%;
+                padding: 1.5%;
             }
 
             #items {
@@ -251,27 +277,39 @@ html(lang='en')
             #header
                 #logo
                     img(src=logo, alt='')
+                    
+                #business
+                    h3
+                        strong=emitter_name
+                    h4 #{emitter_street_number} #{emitter_street_name} 
+                    br
+                        |   #{emitter_zip_code} #{emitter_city}
+                        br
+                        br
+                        |       #{emitter_phone ? fromto_phone : ''} #{emitter_phone}
+                        br
+                        |       #{emitter_mail ? fromto_mail : ''} #{emitter_mail}
                 #reference
                     h3
                         strong=invoice_header_subject
                     h4 #{invoice_header_reference} #{invoice_header_reference_value}
                     p #{invoice_header_date} #{header_date}
             #fromto
-                #from
-                    p
-                        strong=emitter_name
-                        br
-                        |       #{emitter_first_name} #{emitter_last_name}
-                        br
-                        |       #{emitter_street_number} #{emitter_street_name}
-                        br
-                        |       #{emitter_zip_code} #{emitter_city}
-                        br
-                        br
-                        |       #{emitter_phone ? fromto_phone : ''} #{emitter_phone}
-                        br
-                        |       #{emitter_mail ? fromto_mail : ''} #{emitter_mail}
                 #to
+                    p
+                         strong=recipient_company
+                        br
+                        |       #{recipient_first_name} #{recipient_last_name}
+                        br
+                        |       #{recipient_street_number} #{recipient_street_name}
+                        br
+                        |       #{recipient_zip_code} #{recipient_city}
+                        br
+                        br
+                        |       #{recipient_phone ? fromto_phone : ''} #{recipient_phone}
+                        br
+                        |       #{recipient_mail ? fromto_mail : ''} #{recipient_mail}
+                #inv
                     p
                         strong=recipient_company
                         br
