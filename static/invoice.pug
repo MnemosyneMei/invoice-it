@@ -60,7 +60,8 @@ html(lang='en')
             }
 
             #header {
-                height: 80px;
+                height: 100px;                
+                border-bottom: solid grey 1px;
             }
 
             #header > #business {
@@ -126,7 +127,7 @@ html(lang='en')
 
             #fromto > #inv {
                 float: right;
-                width: 45%;
+                width: 40%;
                 background: #efefef;
                 margin-top: 30px;
                 font-size: 85%;
@@ -136,7 +137,7 @@ html(lang='en')
             #fromto > #to {
                 float: left;
                 border: solid grey 1px;
-                width: 45%;
+                width: 55%;
                 margin-top: 30px;
                 font-size: 85%;
                 padding: 1.5%;
@@ -289,11 +290,6 @@ html(lang='en')
                         |       #{emitter_phone ? fromto_phone : ''} #{emitter_phone}
                         br
                         |       #{emitter_mail ? fromto_mail : ''} #{emitter_mail}
-                #reference
-                    h3
-                        strong=invoice_header_subject
-                    h4 #{invoice_header_reference} #{invoice_header_reference_value}
-                    p #{invoice_header_date} #{header_date}
             #fromto
                 #to
                     p
@@ -311,18 +307,17 @@ html(lang='en')
                         |       #{recipient_mail ? fromto_mail : ''} #{recipient_mail}
                 #inv
                     p
-                        strong=recipient_company
-                        br
-                        |       #{recipient_first_name} #{recipient_last_name}
-                        br
-                        |       #{recipient_street_number} #{recipient_street_name}
-                        br
-                        |       #{recipient_zip_code} #{recipient_city}
-                        br
-                        br
-                        |       #{recipient_phone ? fromto_phone : ''} #{recipient_phone}
-                        br
-                        |       #{recipient_mail ? fromto_mail : ''} #{recipient_mail}
+                    h3
+                        strong=invoice_header_subject : #{invoice_header_reference_value}
+                        
+                    br
+                    |       Order No. : #{order_no}
+                    br
+                    |       Terms : #{terms}
+                    br
+                    |       #{invoice_header_date} #{header_date}
+                    br
+                    |     
             #items
                 p=table_information
 
